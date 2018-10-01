@@ -9,6 +9,9 @@ var mongoose = require('mongoose');
 //utils
 var dbUrl = 'mongodb://teste:qualquercoisa1@ds125841.mlab.com:25841/test-chat';
 
+//codevars
+var connectedUsers = 0;
+
 //app configs
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
@@ -45,9 +48,12 @@ mongoose.connect(dbUrl, (err) => {
 
 io.on('connection', (socket) => {
     console.log('a user is connected');
+    console.log('connected users:', ++connectedUsers);
+
     socket.on('disconnect', function(){
         console.log('user disconnected');
-      });
+        console.log('connected users:', --connectedUsers);
+    });
 })
 
 var server = http.listen(80, () => {
