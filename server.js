@@ -47,6 +47,6 @@ io.on('connection', () => {
     console.log('a user is connected');
 })
 
-var server = http.listen(3000, () => {
+var server = http.listen(80, () => {
     console.log('server running on port', server.address().port);
 })
