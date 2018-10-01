@@ -16,10 +16,10 @@ function addMessages(message){
       <p>  ${message.message} </p>`)
    }
 function getMessages(){
-  $.get('http://localhost:80/messages', (data) => {
+  $.get('http://35.199.115.157:80/messages', (data) => {
    data.forEach(addMessages);
    })
  }
 function sendMessage(message){
-   $.post('http://localhost:80/messages', message)
+   $.post('http://35.199.115.157:80/messages', message)
  }
