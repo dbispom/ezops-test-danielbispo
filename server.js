@@ -45,6 +45,9 @@ mongoose.connect(dbUrl, (err) => {
 
 io.on('connection', () => {
     console.log('a user is connected');
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+      });
 })
 
 var server = http.listen(80, () => {
