@@ -2,6 +2,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 
 //utils
@@ -25,6 +27,7 @@ app.post('/messages', (req, res) => {
         if(err) {
             sendStatus(500);
         }
+        io.emit('message', req.body);
         res.sendStatus(200);
     })
 })
@@ -40,6 +43,10 @@ mongoose.connect(dbUrl, (err) => {
     console.log('mongodb connected', err);
 })
 
-var server = app.listen(3000, () => {
+io.on('connection', () => {
+    console.log('a user is connected');
+})
+
+var server = http.listen(3000, () => {
     console.log('server running on port', server.address().port);
 })

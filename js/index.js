@@ -1,3 +1,7 @@
+var socket = io();
+
+socket.on('message', addMessages);
+
 $(() => {
     $("#send").click(()=>{
        sendMessage({
