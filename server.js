@@ -23,13 +23,20 @@ app.get('/messages', (req, res) => {
 
 app.post('/messages', (req, res) => {
     var message = new Message(req.body);
-    message.save((err) => {
-        if(err) {
-            sendStatus(500);
-        }
-        io.emit('message', req.body);
-        res.sendStatus(200);
-    })
+
+    var lastmessage = Message.findOne({}, {}, { sort: { 'created_at' : -1 } }); 
+
+    if (message.message === lastmessage) {
+        res.sendStatus(204);
+    } else {
+        message.save((err) => {
+            if(err) {
+                sendStatus(500);
+            }
+            io.emit('message', req.body);
+            res.sendStatus(200);
+        })
+    }
 })
 
 //model
