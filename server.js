@@ -26,7 +26,7 @@ app.post('/messages', (req, res) => {
 
     var lastmessage = Message.findOne({}, {}, { sort: { 'created_at' : -1 } }); 
 
-    if (message.message === lastmessage.message) {
+    if (message.message == lastmessage.message) {
         res.sendStatus(204);
     } else {
         message.save((err) => {
