@@ -1,0 +1,22 @@
+{
+  "name": "ezops-test-danielbispo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbispom/ezops-test-danielbispo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbispom/ezops-test-danielbispo/issues"
+  },
+  "homepage": "https://github.com/dbispom/ezops-test-danielbispo#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
