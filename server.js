@@ -23,12 +23,6 @@ app.get('/messages', (req, res) => {
 
 app.post('/messages', (req, res) => {
     var message = new Message(req.body);
-
-    var lastmessage = Message.findOne({}, {}, { sort: { 'created_at' : -1 } }); 
-
-    if (message.message == lastmessage.message) {
-        res.sendStatus(204);
-    } else {
         message.save((err) => {
             if(err) {
                 sendStatus(500);
@@ -36,7 +30,6 @@ app.post('/messages', (req, res) => {
             io.emit('message', req.body);
             res.sendStatus(200);
         })
-    }
 })
 
 //model

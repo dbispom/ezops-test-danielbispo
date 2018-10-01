@@ -21,9 +21,5 @@ function getMessages(){
    })
  }
 function sendMessage(message){
-   $.post('http://35.199.115.157:80/messages', message, (data, textStatus, jqXHR) => {
-     if (jqXHR.status == 204) {
-       alert("Stop spamming!");
-     }
-   })
+   $.post('http://35.199.115.157:80/messages', message)
  }
